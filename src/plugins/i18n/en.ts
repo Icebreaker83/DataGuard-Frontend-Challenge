@@ -15,10 +15,17 @@ export default {
       },
     },
     created_at: "Created at",
+    repositories: {
+      list: {
+        self: "Github repositories",
+      },
+    },
   },
   misc: {
     self: "Misc",
     from: "From",
     to: "To",
+    home: "Home",
   },
+  404: "404 - Page not found",
 };

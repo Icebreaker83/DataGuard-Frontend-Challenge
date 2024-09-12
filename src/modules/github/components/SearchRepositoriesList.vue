@@ -6,6 +6,11 @@ const { repositoriesByLanguage } = storeToRefs(useGithubStore());
 </script>
 <template>
   <v-container fluid>
+    <v-row>
+      <v-col cols="12">
+        {{ $t("github.repositories.list.self") }}
+      </v-col>
+    </v-row>
     <v-row justify="center">
       <v-col
         v-for="item in repositoriesByLanguage"

@@ -12,6 +12,7 @@ declare module 'vue' {
     DateRangeInput: typeof import('./components/DateRangeInput.vue')['default']
     Default: typeof import('./layouts/default.vue')['default']
     ExternalLink: typeof import('./components/ExternalLink.vue')['default']
+    PageNotFound: typeof import('./components/PageNotFound.vue')['default']
     Pages: typeof import('./pages/index.vue')['default']
     ProgrammingLanguageAutocomplete: typeof import('./components/ProgrammingLanguageAutocomplete.vue')['default']
     RepositoryInfo: typeof import('./modules/github/components/RepositoryInfo.vue')['default']

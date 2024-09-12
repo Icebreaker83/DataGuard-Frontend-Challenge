@@ -23,11 +23,11 @@ const onSubmit = () => {
         color="info"
         block
         :disabled="props.disabled"
+        prepend-icon="mdi-magnify"
+        :text="$t('filters.submit')"
         class="text-none"
         @click.stop="onSubmit"
-      >
-        {{ $t("filters.submit") }}
-      </v-btn>
+      />
     </v-container>
   </v-navigation-drawer>
 </template>
