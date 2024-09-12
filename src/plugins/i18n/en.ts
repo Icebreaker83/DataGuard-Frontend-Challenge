@@ -2,6 +2,9 @@ export default {
   filters: {
     self: "Filters",
     submit: "Search selected filters",
+    between: "between",
+    from: "from",
+    to: "to",
   },
   github: {
     filters: {
@@ -23,6 +26,7 @@ export default {
   },
   misc: {
     self: "Misc",
+    and: "and",
     from: "From",
     to: "To",
     home: "Home",

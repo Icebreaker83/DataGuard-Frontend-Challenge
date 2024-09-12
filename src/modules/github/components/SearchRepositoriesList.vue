@@ -7,8 +7,13 @@ const { repositoriesByLanguage } = storeToRefs(useGithubStore());
 <template>
   <v-container fluid>
     <v-row>
-      <v-col cols="12">
+      <v-col cols="12" class="text-h3">
         {{ $t("github.repositories.list.self") }}
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <ActiveFilters />
       </v-col>
     </v-row>
     <v-row justify="center">

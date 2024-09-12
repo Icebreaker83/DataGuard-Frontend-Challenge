@@ -15,10 +15,24 @@ const submitDisabled = computed(() => {
     (!language.length && !created.from && !created.to && !stars)
   );
 });
+
+const router = useRouter();
 const onSubmit = () => {
-  const query = getSearchQuery(filters.value);
-  if (!query) return;
-  getRepositoriesBySearchQuery(query, (response) => {
+  const filterString = getSearchQuery(filters.value);
+  if (!filterString) return;
+  const query = {
+    q: getSearchQuery(filters.value),
+    sort: "stars",
+    order: "desc",
+  };
+  const queryString = Object.entries(query)
+    .reduce((acc, [key, value]) => {
+      acc.push(`${key}=${value}`);
+      return acc;
+    }, <string[]>[])
+    .join("&");
+  getRepositoriesBySearchQuery(queryString, (response) => {
+    router.replace({ query });
     setRepositoriesByLanguage(response.data.items);
   });
 };

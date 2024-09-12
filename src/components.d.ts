@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ActiveFilters: typeof import('./modules/github/components/ActiveFilters.vue')['default']
     App: typeof import('./App.vue')['default']
     DataDisplay: typeof import('./components/DataDisplay.vue')['default']
     DateRangeInput: typeof import('./components/DateRangeInput.vue')['default']

@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import { VTextarea, VTextField } from "vuetify/components";
+import { getLocalizedDate } from "@/util/helpers";
 
 const props = defineProps<{
   format?: "textarea" | "date" | "stars";
 }>();
 const formatters = {
   date: (value: string | number) => {
-    const date = new Date(value);
-    if (!(date instanceof Date) || isNaN(date.getTime())) {
-      return value;
-    }
-    return date.toLocaleDateString();
+    return getLocalizedDate(value);
   },
   textarea: (value: string | number) => {
     return value;
