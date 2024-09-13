@@ -8,7 +8,8 @@ export const useEndpoints = () => {
 
   const getRepositoriesBySearchQuery = (
     query: string,
-    successCallback: (response: ApiResponse) => void
+    successCallback: (response: ApiResponse) => void,
+    finallyCallback?: () => void
   ) => {
     return sendRequest({
       method: "get",
@@ -16,6 +17,7 @@ export const useEndpoints = () => {
       onSuccess: {
         callback: successCallback,
       },
+      ...(finallyCallback && { finally: finallyCallback }),
     });
   };
 

@@ -31,6 +31,7 @@ export default {
     to: "To",
     home: "Home",
     error: "Error",
+    noData: "No data",
   },
   404: "404 - Page not found",
 };

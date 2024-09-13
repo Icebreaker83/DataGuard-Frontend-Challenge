@@ -1,7 +1,9 @@
 # DataGuard frontend challenge
 
-This is the project that was created as a part of the technical interview. Because of the deadline certain features, such as testing, are not implemented fully.  
-Better test code coverage is needed. Current tests are implemented as a PoC.
+This is the project that was created as a part of the technical interview.  
+Because of the deadline certain features, such as testing, are not implemented fully.  
+Better test code coverage is needed. Current tests are implemented as a PoC.  
+Infinite scroll should be refactored to use [v-infinite-scroll](https://vuetifyjs.com/en/api/v-infinite-scroll/). Currently documentation is lacking on implemantation of [v-virtual-scroll](https://vuetifyjs.com/en/api/v-virtual-scroll/) inside [v-infinite-scroll](https://vuetifyjs.com/en/api/v-infinite-scroll/)
 
 ## 💿 Install
 
