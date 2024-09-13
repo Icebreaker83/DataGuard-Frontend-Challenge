@@ -10,14 +10,12 @@ export const useAlertsStore = defineStore("alerts", () => {
   };
 
   const showAlert = (alert: Alert) => {
-    console.log("show alert: ", alert);
     const indexedAlert = {
       id: alerts.value.length,
       ...JSON.parse(JSON.stringify(defaultAlert)),
       ...alert,
     };
     alerts.value.unshift(indexedAlert);
-    console.log("alerts: ", JSON.parse(JSON.stringify(alerts.value)));
     if (alert.type !== "success") return;
     setTimeout(() => {
       hideAlert(indexedAlert);
