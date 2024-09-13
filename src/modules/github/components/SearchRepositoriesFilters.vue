@@ -21,7 +21,7 @@ const onSubmit = () => {
     ...((created.from || created.to) && { created }),
     ...(stars.from && { stars }),
   };
-  Object.assign(activeFilters.value, currentFilters);
+  activeFilters.value = currentFilters;
 };
 </script>
 <template>

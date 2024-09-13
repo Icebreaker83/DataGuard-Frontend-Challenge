@@ -21,8 +21,7 @@ watch(
     </v-row>
     <v-row>
       <v-col cols="12">
-        {{ activeFilters }}
-        <!-- <ActiveFilters /> -->
+        <ActiveFilters />
       </v-col>
     </v-row>
     <Suspense :key="rerenderKey">

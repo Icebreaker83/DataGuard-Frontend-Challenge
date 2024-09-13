@@ -1,6 +1,10 @@
-import { GithubFilter, SearchRepositoriesFilters } from "./types";
+import {
+  GithubFilter,
+  SearchRepositoriesFilters,
+  SearchRepositoriesActiveFilters,
+} from "./types";
 import { t } from "@/plugins/i18n";
-import { getLocalizedDate } from "@/util/helpers";
+import { getLocalizedValue } from "@/util/helpers";
 
 export const filterReqex = /^(.+):(.+)$/;
 export const betweenRegex = /^(.+)..(.+)$/;
@@ -31,7 +35,7 @@ export const filtersDefinition = {
   },
 };
 
-export const getFilterText = (
+export const getFilterTextFromRouteQuery = (
   filter: string,
   filters: SearchRepositoriesFilters
 ) => {
@@ -49,9 +53,7 @@ export const getFilterText = (
     const values = valueMatch
       .slice(1)
       .map((item) => {
-        const numVal = Number(item);
-        if (!isNaN(numVal)) return numVal.toLocaleString();
-        return getLocalizedDate(item);
+        return getLocalizedValue(item);
       })
       .join(" " + t("misc.and") + " ");
     if (filterKey === "stars")
@@ -62,6 +64,43 @@ export const getFilterText = (
   }
 
   return "";
+};
+
+export const getFilterTextFromActiveFilters = (
+  filters: SearchRepositoriesActiveFilters
+): string[] => {
+  return Object.entries(filters).reduce((acc, [key, value]) => {
+    if (key === "language") return acc;
+    if (key === "stars" && "from" in value) {
+      acc.push(
+        `${t(
+          "github.filters.stars.label"
+        ).toLowerCase()} ${value.from?.toLocaleString()} ${t(
+          "github.filters.stars.self"
+        )}`
+      );
+    }
+    if ("from" in value && "to" in value) {
+      const { from, to } = value;
+      if (from && to) {
+        acc.push(
+          `${t("filters.between")} ${getLocalizedValue(
+            from
+          )} - ${getLocalizedValue(to)}`
+        );
+        return acc;
+      }
+      if (from) {
+        acc.push(`${t("filters.from")} ${getLocalizedValue(from)}`);
+        return acc;
+      }
+      if (to) {
+        acc.push(`${t("filters.to")} ${getLocalizedValue(to)}`);
+        return acc;
+      }
+    }
+    return acc;
+  }, <string[]>[]);
 };
 
 const getRangeQuery = (
