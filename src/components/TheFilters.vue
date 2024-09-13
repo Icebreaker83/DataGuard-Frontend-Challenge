@@ -1,13 +1,18 @@
 <script setup lang="ts">
+import { useAppStore } from "@/stores/app";
+import { storeToRefs } from "pinia";
+
 const props = defineProps<{ disabled: boolean }>();
 const emit = defineEmits(["submit"]);
+
+const { drawer } = storeToRefs(useAppStore());
 const onSubmit = () => {
   if (props.disabled) return;
   emit("submit");
 };
 </script>
 <template>
-  <v-navigation-drawer>
+  <v-navigation-drawer v-model="drawer">
     <v-list>
       <v-list-item
         prepend-icon="mdi-filter-multiple"

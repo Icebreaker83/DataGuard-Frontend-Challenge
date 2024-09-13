@@ -11,6 +11,7 @@ defineProps<{ repository: GithubRepository }>();
         :text="repository.name"
         :href="repository.html_url"
         target="_blank"
+        append-icon="mdi-open-in-new"
       />
     </template>
     <v-container fluid class="pt-0">
