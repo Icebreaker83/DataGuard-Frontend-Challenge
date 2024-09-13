@@ -2,6 +2,6 @@
 <template>
   <v-container fluid class="fill-height">
     <SearchRepositoriesFilters />
-    <SearchRepositoriesList />
+    <SearchRepositoriesListSuspense />
   </v-container>
 </template>

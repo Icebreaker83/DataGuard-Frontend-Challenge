@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VTextarea, VTextField } from "vuetify/components";
+import { VTextarea, VTextField, VChip } from "vuetify/components";
 import { getLocalizedDate } from "@/util/helpers";
 
 const props = defineProps<{
@@ -25,24 +25,32 @@ const model = defineModel<string | number | null>({
   required: true,
 });
 
-const componentToDisplay = computed(() => {
-  if (props.format === "textarea") return VTextarea;
-  return VTextField;
+const toDisplay = computed(() => {
+  if (props.format === "textarea")
+    return {
+      component: VTextarea,
+      props: { modelValue: model },
+    };
+  if (props.format === "stars")
+    return {
+      component: VChip,
+      props: {
+        text: `${model.value} stars`,
+        color: "success",
+        "prepend-icon": "mdi-star",
+      },
+    };
+  return { component: VTextField, props: { modelValue: model } };
 });
 </script>
 <template>
   <component
-    :is="componentToDisplay"
-    v-model="model"
+    :is="toDisplay.component"
+    v-bind="toDisplay.props"
     :closable="false"
     readonly
     hide-details
-    class="test"
-  >
-    <template #prepend-inner v-if="props.format === 'stars'">
-      <v-chip color="success" prepend-icon="mdi-star" text="stars" />
-    </template>
-  </component>
+  />
 </template>
 <style scoped lang="scss">
 .v-text-field {

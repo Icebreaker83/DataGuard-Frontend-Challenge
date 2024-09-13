@@ -27,6 +27,9 @@ export type SearchRepositoriesFilters = Pick<
   "language" | "created" | "stars"
 >;
 
+export type SearchRepositoriesActiveFilters =
+  Partial<SearchRepositoriesFilters>;
+
 export interface GithubRepository {
   html_url: string;
   language: string;

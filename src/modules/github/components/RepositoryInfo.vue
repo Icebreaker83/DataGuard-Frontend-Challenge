@@ -31,11 +31,7 @@ defineProps<{ repository: GithubRepository }>();
       </v-row>
       <v-row v-if="repository.stargazers_count" dense>
         <v-col cols="12">
-          <DataDisplay
-            v-model="repository.stargazers_count"
-            format="stars"
-            variant="plain"
-          />
+          <DataDisplay v-model="repository.stargazers_count" format="stars" />
         </v-col>
       </v-row>
     </v-container>

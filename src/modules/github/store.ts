@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import {
   SearchRepositoriesFilters,
+  SearchRepositoriesActiveFilters,
   GithubRepository,
   GithubRepositoriesByLanguage,
 } from "./types";
@@ -13,6 +14,7 @@ export const useGithubStore = defineStore(
       created: { from: null, to: null },
       stars: { from: null },
     });
+    const activeFilters = ref<SearchRepositoriesActiveFilters>({});
     const repositoriesByLanguage = ref<GithubRepositoriesByLanguage[]>([]);
 
     const setRepositoriesByLanguage = (repositories: GithubRepository[]) => {
@@ -45,6 +47,7 @@ export const useGithubStore = defineStore(
 
     return {
       filters,
+      activeFilters,
       repositoriesByLanguage,
       setRepositoriesByLanguage,
     };
