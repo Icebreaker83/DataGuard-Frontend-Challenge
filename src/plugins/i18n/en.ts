@@ -30,6 +30,7 @@ export default {
     from: "From",
     to: "To",
     home: "Home",
+    error: "Error",
   },
   404: "404 - Page not found",
 };

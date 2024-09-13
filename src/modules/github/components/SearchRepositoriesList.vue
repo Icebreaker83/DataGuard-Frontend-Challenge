@@ -2,7 +2,15 @@
 import { useGithubStore } from "../store";
 import { storeToRefs } from "pinia";
 
-const { repositoriesByLanguage } = storeToRefs(useGithubStore());
+const { activeFilters } = storeToRefs(useGithubStore());
+const rerenderKey = ref(0);
+watch(
+  activeFilters,
+  () => {
+    rerenderKey.value++;
+  },
+  { deep: true }
+);
 </script>
 <template>
   <v-container fluid>
@@ -13,18 +21,35 @@ const { repositoriesByLanguage } = storeToRefs(useGithubStore());
     </v-row>
     <v-row>
       <v-col cols="12">
-        <ActiveFilters />
+        {{ activeFilters }}
+        <!-- <ActiveFilters /> -->
       </v-col>
     </v-row>
-    <v-row justify="center">
-      <v-col
-        v-for="item in repositoriesByLanguage"
-        :key="item.value"
-        cols="12"
-        sm="6"
-      >
-        <RepositoryList :language="item" />
-      </v-col>
-    </v-row>
+    <Suspense :key="rerenderKey">
+      <template #default>
+        <v-row v-if="'language' in activeFilters" justify="center">
+          <v-col
+            v-for="item in activeFilters.language"
+            :key="item"
+            cols="12"
+            sm="6"
+          >
+            <RepositoryList :language="item" />
+          </v-col>
+        </v-row>
+      </template>
+      <template #fallback>
+        <v-row v-if="'language' in activeFilters" justify="center">
+          <v-col
+            v-for="item in activeFilters.language"
+            :key="item"
+            cols="12"
+            sm="6"
+          >
+            <v-skeleton-loader type="card" height="400" />
+          </v-col>
+        </v-row>
+      </template>
+    </Suspense>
   </v-container>
 </template>
