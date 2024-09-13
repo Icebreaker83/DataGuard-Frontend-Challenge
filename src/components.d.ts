@@ -8,20 +8,17 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ActiveFilters: typeof import('./modules/github/components/ActiveFilters.vue')['default']
-    copy: typeof import('./modules/github/components/RepositoryList copy.vue')['default']
     DataDisplay: typeof import('./components/DataDisplay.vue')['default']
     DateRangeInput: typeof import('./components/DateRangeInput.vue')['default']
     PageNotFound: typeof import('./components/PageNotFound.vue')['default']
     ProgrammingLanguageAutocomplete: typeof import('./components/ProgrammingLanguageAutocomplete.vue')['default']
     RepositoryInfo: typeof import('./modules/github/components/RepositoryInfo.vue')['default']
     RepositoryList: typeof import('./modules/github/components/RepositoryList.vue')['default']
-    RepositoryListSuspense: typeof import('./modules/github/components/RepositoryListSuspense.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchRepositories: typeof import('./modules/github/pages/SearchRepositories.vue')['default']
     SearchRepositoriesFilters: typeof import('./modules/github/components/SearchRepositoriesFilters.vue')['default']
     SearchRepositoriesList: typeof import('./modules/github/components/SearchRepositoriesList.vue')['default']
-    SearchRepositoriesListSuspense: typeof import('./modules/github/components/SearchRepositoriesListSuspense.vue')['default']
     TheFilters: typeof import('./components/TheFilters.vue')['default']
     TheToaster: typeof import('./modules/alerts/components/TheToaster.vue')['default']
   }

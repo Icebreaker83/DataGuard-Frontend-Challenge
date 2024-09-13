@@ -2,8 +2,6 @@ import { defineStore } from "pinia";
 import {
   SearchRepositoriesFilters,
   SearchRepositoriesActiveFilters,
-  GithubRepository,
-  GithubRepositoriesByLanguage,
 } from "./types";
 
 export const useGithubStore = defineStore(
@@ -15,41 +13,10 @@ export const useGithubStore = defineStore(
       stars: { from: null },
     });
     const activeFilters = ref<SearchRepositoriesActiveFilters>({});
-    const repositoriesByLanguage = ref<GithubRepositoriesByLanguage[]>([]);
-
-    const setRepositoriesByLanguage = (repositories: GithubRepository[]) => {
-      repositoriesByLanguage.value = repositories.reduce((acc, item) => {
-        const {
-          language,
-          name,
-          description,
-          stargazers_count,
-          html_url,
-          created_at,
-        } = item;
-        const toAdd = {
-          language,
-          name,
-          description,
-          stargazers_count,
-          html_url,
-          created_at,
-        };
-        const languageGroup = acc.find((el) => el.value === item.language);
-        if (!languageGroup) {
-          acc.push({ value: item.language, items: [toAdd] });
-          return acc;
-        }
-        languageGroup.items.push(toAdd);
-        return acc;
-      }, <GithubRepositoriesByLanguage[]>[]);
-    };
 
     return {
       filters,
       activeFilters,
-      repositoriesByLanguage,
-      setRepositoriesByLanguage,
     };
   },
   { persist: true }

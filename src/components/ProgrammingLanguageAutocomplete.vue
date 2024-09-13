@@ -1,11 +1,6 @@
 <script setup lang="ts">
+import { programmingLanguages } from "@/util/constants";
 const model = defineModel<string[]>({ required: true });
-
-const programmingLanguages = [
-  { value: "javascript", title: "JavaScript" },
-  { value: "typescript", title: "TypeScript" },
-  { value: "c", title: "C" },
-] as const;
 
 const customFilter = (itemTitle: string, queryText: string) => {
   return itemTitle.toLowerCase().indexOf(queryText.toLowerCase()) > -1;

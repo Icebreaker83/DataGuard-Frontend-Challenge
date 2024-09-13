@@ -11,7 +11,3 @@ export const getLocalizedValue = (value: string | number) => {
   if (!isNaN(numVal)) return numVal.toLocaleString();
   return getLocalizedDate(value);
 };
-
-export function sum(a: number, b: number) {
-  return a + b;
-}

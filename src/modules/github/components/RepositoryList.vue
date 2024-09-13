@@ -5,6 +5,7 @@ import { storeToRefs } from "pinia";
 import { getSearchQuery } from "../constants";
 import { useEndpoints } from "../api";
 import { GithubRepository } from "../types";
+import { programmingLanguagesTitles } from "@/util/constants";
 
 const props = defineProps<{ language: string }>();
 
@@ -24,7 +25,7 @@ await getRepositoriesBySearchQuery(query, (response) => {
 </script>
 <template>
   <v-card
-    :title="language ?? $t('misc.self')"
+    :title="programmingLanguagesTitles[language] ?? language ?? $t('misc.self')"
     :max-height="xs ? '' : 400"
     class="fill-height d-flex flex-column"
   >
