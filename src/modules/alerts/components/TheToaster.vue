@@ -15,16 +15,12 @@ const { alerts } = storeToRefs(useAlertsStore());
       :color="toast.color"
       :icon="`$${toast.type}`"
       :title="toast.title"
+      :text="toast.message"
       closable
       max-width="500"
+      class="mb-2"
       @close="hideAlert(toast)"
-    >
-      <template>
-        <span>
-          {{ toast.message }}
-        </span>
-      </template>
-    </v-alert>
+    />
   </div>
 </template>
 <style scoped lang="scss">

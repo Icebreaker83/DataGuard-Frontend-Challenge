@@ -48,17 +48,23 @@ export const useApis = (apiClient: AxiosStatic) => {
         return response;
       })
       .catch((error) => {
+        console.log(1);
         if (apiClient.isCancel(error)) return;
         console.error(error);
 
+        const message =
+          error.status && error.message
+            ? `${error.status} - ${error.message}`
+            : null;
         const noAlert =
           typeof onError?.noAlert === "function"
             ? onError.noAlert(error)
             : onError?.noAlert;
+        console.log("noAlert: ", noAlert);
         !noAlert &&
           showAlert({
             type: "error",
-            message: onError?.message ?? t("misc.error"),
+            message: onError?.message ?? message ?? t("misc.error"),
           });
         onError?.callback?.(error);
       })

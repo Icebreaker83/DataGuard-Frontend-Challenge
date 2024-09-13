@@ -3,9 +3,6 @@
     <v-main>
       <router-view />
     </v-main>
+    <TheToaster />
   </v-app>
 </template>
-
-<script lang="ts" setup>
-  //
-</script>
