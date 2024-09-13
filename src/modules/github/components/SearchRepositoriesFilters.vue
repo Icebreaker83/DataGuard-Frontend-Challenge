@@ -33,6 +33,7 @@ const onSubmit = () => {
             v-model="filters.language"
             :label="$t('github.filters.language.self')"
             :placeholder="$t('github.filters.language.placeholder')"
+            class="required"
           />
         </v-col>
       </v-row>

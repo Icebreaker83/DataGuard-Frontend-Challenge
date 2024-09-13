@@ -73,11 +73,9 @@ export const getFilterTextFromActiveFilters = (
     if (key === "language") return acc;
     if (key === "stars" && "from" in value) {
       acc.push(
-        `${t(
-          "github.filters.stars.label"
-        ).toLowerCase()} ${value.from?.toLocaleString()} ${t(
-          "github.filters.stars.self"
-        )}`
+        `${t("github.filters.stars.label").toLowerCase()} ${getLocalizedValue(
+          value.from ?? ""
+        )} ${t("github.filters.stars.self")}`
       );
     }
     if ("from" in value && "to" in value) {
